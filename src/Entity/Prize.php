@@ -32,7 +32,7 @@ class Prize
     private $votes;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Prize", inversedBy="prizes")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Qrcode", inversedBy="prizes")
      */
     private $qrcodes;
 
