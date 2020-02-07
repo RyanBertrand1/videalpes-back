@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Film;
 use App\Entity\Prize;
+use App\Entity\Projet;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
@@ -12,15 +13,15 @@ class AppFixtures implements FixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        // create 20 Film
+        // create 20 Projet
         for ($i = 0; $i < 20; $i++) {
-            $film = new Film();
-            $film->setName('Film '.$i);
-            $film->setDescription("Description du film".$i);
-            $film->setPersons("Jacquie,Bernard,Bernadette,Marie,Pierre,Paul");
+            $projet = new Projet();
+            $projet->setTitle('Film '.$i);
+            $projet->setDescription("Description du film".$i);
+            $projet->setPersons("Jacquie,Bernard,Bernadette,Marie,Pierre,Paul");
 
             //Create on BDD
-            $manager->persist($film);
+            $manager->persist($projet);
         }
         // create 5 Prize
         for ($i = 0; $i < 5; $i++) {

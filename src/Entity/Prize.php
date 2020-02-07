@@ -37,6 +37,11 @@ class Prize
     private $qrcodes;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="prizes")
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -97,6 +102,30 @@ class Prize
 
     public function addCodes(Qrcode $qrcode){
         $this->qrcodes->add($qrcode);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
     }
 
     /**

@@ -26,9 +26,9 @@ class Vote
     private $prize;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Film", inversedBy="votes", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Projet", inversedBy="votes", cascade={"persist"})
      */
-    private $film;
+    private $projet;
 
     /**
      * @ORM\Column(type="datetime")
@@ -59,18 +59,27 @@ class Vote
     /**
      * @return mixed
      */
-    public function getFilm()
+    public function getProjet()
     {
-        return $this->film;
+        return $this->projet;
     }
 
     /**
-     * @param mixed $film
+     * @param mixed $projet
      */
-    public function setFilm($film): void
+    public function setProjet($projet): void
     {
-        $this->film = $film;
+        $this->projet = $projet;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
 
     /**
      * @ORM\PrePersist()
