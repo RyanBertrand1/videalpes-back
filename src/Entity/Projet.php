@@ -6,7 +6,17 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+            "get",
+ *          "post",
+ *          "get_by_type"={
+ *              "method"="GET",
+                "path"="/projets/get_by_type",
+ *              "controller"="App\Controller\ProjetControllers\GetByType"
+ *          }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
  *
  * @ORM\HasLifecycleCallbacks()
