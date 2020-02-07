@@ -7,11 +7,11 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ApiResource()
- * @ORM\Entity(repositoryClass="App\Repository\FilmRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
  *
  * @ORM\HasLifecycleCallbacks()
  */
-class Film
+class Projet
 {
     /**
      * @ORM\Id()
@@ -23,7 +23,7 @@ class Film
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $name;
+    private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -36,9 +36,14 @@ class Film
     private $persons;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Vote", mappedBy="film")
+     * @ORM\OneToMany(targetEntity="App\Entity\Vote", mappedBy="projet", cascade={"persist", "remove"})
      */
     private $votes;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="projets")
+     */
+    private $type;
 
     /**
      * @ORM\Column(type="datetime")
@@ -50,14 +55,14 @@ class Film
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getTitle(): ?string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): self
+    public function setTitle(string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
@@ -100,6 +105,22 @@ class Film
     public function setVotes($votes): void
     {
         $this->votes = $votes;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param mixed $type
+     */
+    public function setType($type): void
+    {
+        $this->type = $type;
     }
 
     /**
