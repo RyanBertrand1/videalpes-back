@@ -47,4 +47,13 @@ class ProjetRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByTypeId($typeId){
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.type', 'type')
+            ->andWhere('type.id LIKE :id')
+            ->setParameter('id', $typeId)
+            ->getQuery()
+            ->getResult();
+    }
 }
