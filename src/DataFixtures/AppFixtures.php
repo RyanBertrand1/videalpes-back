@@ -2,9 +2,9 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Film;
 use App\Entity\Prize;
 use App\Entity\Projet;
+use App\Entity\Type;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
@@ -13,8 +13,18 @@ class AppFixtures implements FixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        // create 20 Projet
-        for ($i = 0; $i < 20; $i++) {
+        $titleType = ['Film','Photographie','site web'];
+
+        // create type for each title on array
+        for($i = 0; $i < count($titleType);$i++){
+            $type = new Type();
+            $type->setTitle($titleType[$i]);
+
+            $manager->persist($type);
+        }
+
+        // create 10 Project
+        for ($i = 0; $i < 10; $i++) {
             $projet = new Projet();
             $projet->setTitle('Film '.$i);
             $projet->setDescription("Description du film".$i);
