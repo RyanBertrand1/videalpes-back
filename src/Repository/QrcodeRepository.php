@@ -47,4 +47,12 @@ class QrcodeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByUuid($uuid){
+        return $this->createQueryBuilder('q')
+            ->andWhere('q.uuid = :uuid')
+            ->setParameter('uuid', $uuid)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

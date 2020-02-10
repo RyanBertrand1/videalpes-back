@@ -5,9 +5,20 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Ramsey\Uuid\Uuid;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get",
+ *          "post",
+ *          "get_by_uuid"={
+ *              "method"="GET",
+ *              "path"="/qrcodes/get_by_uuid",
+ *              "controller"="App\Controller\QrcodesControllers\GetByUuid"
+ *          }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\QrcodeRepository")
  *
  * @ORM\HasLifecycleCallbacks()
@@ -22,6 +33,11 @@ class Qrcode
     private $id;
 
     /**
+     * @ORM\Column(type="uuid", unique=true)
+     */
+    private $uuid;
+
+    /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Prize", mappedBy="qrcodes")
      */
     private $prizes;
@@ -33,6 +49,7 @@ class Qrcode
 
     public function __construct()
     {
+        $this->uuid = Uuid::uuid4();
         $this->prizes = new ArrayCollection();
     }
 
@@ -60,6 +77,14 @@ class Qrcode
     public function addPrize(Prize $prize){
         $this->prizes->add($prize);
         $prize->addCodes($this);
+    }
+
+    /**
+     * @return \Ramsey\Uuid\UuidInterface
+     */
+    public function getUuid(): \Ramsey\Uuid\UuidInterface
+    {
+        return $this->uuid;
     }
 
     /**
