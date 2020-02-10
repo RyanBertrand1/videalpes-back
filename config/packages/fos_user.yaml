@@ -1,7 +1,8 @@
 fos_user:
   db_driver: orm
   firewall_name: main
-  user_class: Entity\User
+  user_class: App\Entity\User
   from_email:
-    address: "test@test.test"
-    sender_name: "test@test.test"
+    address:        noreply@example.com
+    sender_name:    Demo App
+
