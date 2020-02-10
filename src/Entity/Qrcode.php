@@ -8,7 +8,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *          "get",
+ *          "post",
+ *          "get_by_uuid"={
+ *              "method"="GET",
+ *              "path"="/qrcodes/get_by_uuid",
+ *              "controller"="App\Controller\QrcodesControllers\GetByUuid"
+ *          }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\QrcodeRepository")
  *
  * @ORM\HasLifecycleCallbacks()
