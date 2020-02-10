@@ -15,23 +15,22 @@ class AppFixtures implements FixtureInterface
     {
         $titleType = ['Film','Photographie','site web'];
 
-        // create type for each title on array
-        for($i = 0; $i < count($titleType);$i++){
-            $type = new Type();
-            $type->setTitle($titleType[$i]);
-
-            $manager->persist($type);
-        }
-
         // create 10 Project
         for ($i = 0; $i < 10; $i++) {
-            $projet = new Projet();
-            $projet->setTitle('Film '.$i);
-            $projet->setDescription("Description du film".$i);
-            $projet->setPersons("Jacquie,Bernard,Bernadette,Marie,Pierre,Paul");
+            if($i < count($titleType)){
+                $type = new Type();
+                $type->setTitle($titleType[$i]);
 
-            //Create on BDD
-            $manager->persist($projet);
+                $manager->persist($type);
+
+                $projet = new Projet();
+                $projet->setTitle('Film '.$i);
+                $projet->setDescription("Description du film".$i);
+                $projet->setPersons("Jacquie,Bernard,Bernadette,Marie,Pierre,Paul");
+                $projet->setType($type);
+                //Create on BDD
+                $manager->persist($projet);
+            }
         }
         // create 5 Prize
         for ($i = 0; $i < 5; $i++) {
