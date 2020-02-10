@@ -5,9 +5,10 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(normalizationContext={"groups"={"prize_list"}})
  * @ORM\Entity(repositoryClass="App\Repository\PrizeRepository")
  *
  * @ORM\HasLifecycleCallbacks()
@@ -18,11 +19,13 @@ class Prize
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"prize_list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"prize_list"})
      */
     private $name;
 
@@ -37,7 +40,8 @@ class Prize
     private $qrcodes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="prizes")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="prizes", cascade={"persist"})
+     * @Groups({"prize_list"})
      */
     private $type;
 

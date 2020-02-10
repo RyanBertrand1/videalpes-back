@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource(
+ * @ApiResource(normalizationContext={"groups"={"projet_list"}},
  *     collectionOperations={
             "get",
  *          "post",
@@ -27,21 +28,25 @@ class Projet
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"projet_list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"projet_list"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"projet_list"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"projet_list"})
      */
     private $persons;
 
@@ -51,7 +56,7 @@ class Projet
     private $votes;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="projets")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="projets", cascade={"persist"})
      */
     private $type;
 
