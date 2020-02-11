@@ -57,6 +57,7 @@ class Projet
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Type", inversedBy="projets", cascade={"persist"})
+     * @Groups({"projet_list"})
      */
     private $type;
 

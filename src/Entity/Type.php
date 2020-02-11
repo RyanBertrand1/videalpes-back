@@ -17,13 +17,13 @@ class Type
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"prize_list", "type_list"})
+     * @Groups({"prize_list", "type_list", "projet_list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"prize_list", "type_list"})
+     * @Groups({"prize_list", "type_list", "projet_list"})
      */
     private $title;
 
