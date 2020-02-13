@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Launch;
 use App\Entity\Prize;
 use App\Entity\Projet;
 use App\Entity\Type;
@@ -16,6 +17,10 @@ class AppFixtures implements FixtureInterface
     {
         $titleType = ['Film','Photographie','site web'];
         $types = [];
+
+        $launch = new Launch();
+        $launch->setAuthorization(true);
+        $manager->persist($launch);
 
         for($i = 0; $i< count($titleType); $i++){
             $type = new Type();
