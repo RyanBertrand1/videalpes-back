@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *                   "path"="/launches",
  *                   "controller"="App\Controller\LaunchControllers\LaunchById"}
  *     },
- *     itemOperations={"get"})
+ *     itemOperations={"get", "put"})
  * @ORM\Entity(repositoryClass="App\Repository\LaunchRepository")
  */
 class Launch
