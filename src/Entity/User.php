@@ -10,7 +10,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ApiResource(
  *     normalizationContext={"groups"={"user", "user-read"}},
- *     denormalizationContext={"groups"={"user", "user-write"}}
+ *     denormalizationContext={"groups"={"user", "user-write"}},
+ *     attributes={"pagination_enabled"=false}
  * )
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */

@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Ramsey\Uuid\Uuid;
 
 /**
- * @ApiResource(
+ * @ApiResource(attributes={"pagination_enabled"=false},
  *     collectionOperations={
  *          "get",
  *          "post",

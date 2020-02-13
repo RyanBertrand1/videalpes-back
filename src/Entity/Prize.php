@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource(normalizationContext={"groups"={"prize_list"}})
+ * @ApiResource(normalizationContext={"groups"={"prize_list"}}, attributes={"pagination_enabled"=false},)
  * @ORM\Entity(repositoryClass="App\Repository\PrizeRepository")
  *
  * @ORM\HasLifecycleCallbacks()

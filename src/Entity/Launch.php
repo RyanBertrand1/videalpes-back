@@ -6,8 +6,9 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource(collectionOperations={
-            "get" = {"method"="GET",
+ * @ApiResource(attributes={"pagination_enabled"=false},
+ *  collectionOperations={
+ *          "get" = {"method"="GET",
  *                   "path"="/launches",
  *                   "controller"="App\Controller\LaunchControllers\LaunchById"}
  *     },
