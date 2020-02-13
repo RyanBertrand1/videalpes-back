@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Prize;
 use App\Entity\Projet;
 use App\Entity\Type;
+use App\Entity\Vote;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
@@ -47,18 +48,47 @@ class AppFixtures implements FixtureInterface
         }
         // create 5 Prize
         for ($i = 0; $i < 5; $i++) {
-            if($i< count($titleType)) {
+            if ($i < count($titleType)) {
                 $type = $types[$i];
 
                 $prize = new Prize();
-                $prize->setName('Prize '.$i);
+                $prize->setName('Prize ' . $i);
                 $prize->setType($type);
                 //Create on BDD
                 $manager->persist($prize);
             }
         }
+        for ($j = 0; $j < 3; $j++) {
+            // create 25 Vote Film 1 for prize 1
+            for ($i = 0; $i < 25; $i++) {
 
+                $vote = new Vote();
+                $vote->setPrize($j);
+                $vote->setProjet(1);
+                //Create on BDD
+                $manager->persist($vote);
+            }
 
+            // create 15 Vote Film 2 for prize 1
+            for ($i = 0; $i < 15; $i++) {
+
+                $vote = new Vote();
+                $vote->setPrize($j);
+                $vote->setProjet(2);
+                //Create on BDD
+                $manager->persist($vote);
+            }
+
+            // create 10 Vote Film 3 for prize 1
+            for ($i = 0; $i < 10; $i++) {
+                $vote = new Vote();
+                $vote->setPrize($j);
+                $vote->setProjet(3);
+                //Create on BDD
+                $manager->persist($vote);
+            }
+
+        }
         $manager->flush();
     }
 }
