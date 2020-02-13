@@ -17,6 +17,8 @@ class AppFixtures implements FixtureInterface
     {
         $titleType = ['Film','Photographie','site web'];
         $types = [];
+        $project = [];
+        $prize = [];
 
         $launch = new Launch();
         $launch->setAuthorization(true);
@@ -48,6 +50,7 @@ class AppFixtures implements FixtureInterface
                 $projet->setDescription("Description du film".$i);
                 $projet->setPersons("Jacquie,Bernard,Bernadette,Marie,Pierre,Paul");
                 $projet->setType($type);
+                $project[$i] = $project;
                 //Create on BDD
                 $manager->persist($projet);
         }
@@ -59,6 +62,8 @@ class AppFixtures implements FixtureInterface
                 $prize = new Prize();
                 $prize->setName('Prize ' . $i);
                 $prize->setType($type);
+                $prize[$i] = $prize;
+
                 //Create on BDD
                 $manager->persist($prize);
             }
@@ -68,8 +73,8 @@ class AppFixtures implements FixtureInterface
             for ($i = 0; $i < 25; $i++) {
 
                 $vote = new Vote();
-                $vote->setPrize($j);
-                $vote->setProjet(1);
+                $vote->setPrize($prize[$j]);
+                $vote->setProjet($project[1]);
                 //Create on BDD
                 $manager->persist($vote);
             }
@@ -78,8 +83,8 @@ class AppFixtures implements FixtureInterface
             for ($i = 0; $i < 15; $i++) {
 
                 $vote = new Vote();
-                $vote->setPrize($j);
-                $vote->setProjet(2);
+                $vote->setPrize($prize[$j]);
+                $vote->setProjet($project[2]);
                 //Create on BDD
                 $manager->persist($vote);
             }
@@ -87,8 +92,8 @@ class AppFixtures implements FixtureInterface
             // create 10 Vote Film 3 for prize 1
             for ($i = 0; $i < 10; $i++) {
                 $vote = new Vote();
-                $vote->setPrize($j);
-                $vote->setProjet(3);
+                $vote->setPrize($prize[$j]);
+                $vote->setProjet($project[3]);
                 //Create on BDD
                 $manager->persist($vote);
             }
