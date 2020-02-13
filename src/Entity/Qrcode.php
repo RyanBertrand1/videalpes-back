@@ -16,6 +16,11 @@ use Ramsey\Uuid\Uuid;
  *              "method"="GET",
  *              "path"="/qrcodes/get_by_uuid",
  *              "controller"="App\Controller\QrcodesControllers\GetByUuid"
+ *          },
+ *          "create_by_number"={
+                "method"="POST",
+ *              "path"="/qrcodes/create_by_number",
+ *              "controller"="App\Controller\QrcodesControllers\createByNumber"
  *          }
  *     }
  * )
