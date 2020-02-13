@@ -8,6 +8,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource(normalizationContext={"groups"={"projet_list"}},
+ *  attributes={"pagination_enabled"=false},
  *     collectionOperations={
             "get",
  *          "post",
@@ -15,7 +16,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *              "method"="GET",
                 "path"="/projets/get_by_type",
  *              "controller"="App\Controller\ProjetControllers\GetByType"
- *          }
+ *          },
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
