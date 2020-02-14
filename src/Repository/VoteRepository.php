@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Vote;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @method Vote|null find($id, $lockMode = null, $lockVersion = null)
@@ -14,8 +15,11 @@ use Doctrine\Common\Persistence\ManagerRegistry;
  */
 class VoteRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    private $em;
+
+    public function __construct(ManagerRegistry $registry, EntityManagerInterface $em)
     {
+        $this->em = $em;
         parent::__construct($registry, Vote::class);
     }
 
@@ -47,4 +51,18 @@ class VoteRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findVoteByProject($projectId,$prizeID)
+    {
+        return $this->createQueryBuilder('v')
+            ->leftJoin('v.projet', 'projet')
+            ->leftJoin("v.prize","prize")
+            ->andWhere('projet.id = :projetID')
+            ->andWhere('prize.id = :prizeID')
+            ->setParameter('projetID', $projectId)
+            ->setParameter('prizeID', $prizeID)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
