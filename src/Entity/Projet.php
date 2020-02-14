@@ -114,7 +114,7 @@ class Projet
         return $this;
     }
 
-    public function get()
+    public function getVotes()
     {
         return $this->votes;
     }
