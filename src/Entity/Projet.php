@@ -63,12 +63,6 @@ class Projet
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups({"projet_list"})
-     */
-    private $imgUrl;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -117,18 +111,6 @@ class Projet
     public function getVotes()
     {
         return $this->votes;
-    }
-
-    public function getImgUrl(): ?string
-    {
-        return $this->imgUrl;
-    }
-
-    public function setImgUrl(string $imgUrl): self
-    {
-        $this->imgUrl = $imgUrl;
-
-        return $this;
     }
 
     /**
