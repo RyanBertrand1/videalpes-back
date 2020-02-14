@@ -40,7 +40,7 @@ class Projet
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", nullable=true)
      * @Groups({"projet_list"})
      */
     private $description;
