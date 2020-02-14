@@ -63,7 +63,7 @@ class Projet
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      * @Groups({"projet_list"})
      */
     private $imgUrl;
@@ -119,7 +119,7 @@ class Projet
         return $this->votes;
     }
 
-    public function getImgUlr(): ?string
+    public function getImgUrl(): ?string
     {
         return $this->imgUrl;
     }
