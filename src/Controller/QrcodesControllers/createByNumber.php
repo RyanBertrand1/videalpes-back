@@ -8,6 +8,8 @@ use App\Entity\Qrcode;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\Response;
+
 class createByNumber
 {
     private $em;
@@ -27,5 +29,7 @@ class createByNumber
             $this->em->persist($qrcode);
         }
         $this->em->flush();
+
+        return new Response("OK");
     }
 }
