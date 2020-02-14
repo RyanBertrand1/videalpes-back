@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
             "get",
  *          "post",
  *          "get_by_type"={
- *              "method"="GET",
+ *              "method"="POST",
                 "path"="/projets/get_by_type",
  *              "controller"="App\Controller\ProjetControllers\GetByType"
  *          },

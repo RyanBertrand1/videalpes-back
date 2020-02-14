@@ -30,6 +30,5 @@ class createByNumber
         }
         $this->em->flush();
 
-        return new Response("OK");
     }
 }
