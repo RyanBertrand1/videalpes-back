@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource(normalizationContext={"groups"={"type_list"}}, attributes={"pagination_enabled"=false},)
+ * @ApiResource(attributes={"force_eager"=false}, normalizationContext={"groups"={"type_list"}}, attributes={"pagination_enabled"=false},)
  * @ORM\Entity(repositoryClass="App\Repository\TypeRepository")
  * @ORM\HasLifecycleCallbacks()
  */
