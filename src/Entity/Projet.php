@@ -63,9 +63,26 @@ class Projet
     private $type;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"projet_list"})
+     */
+    private $imgUrl;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    public function getImgUrl()
+    {
+        return $this->imgUrl;
+    }
+
+    public function setImgUrl(string $img)
+    {
+        $this->imgUrl = $img;
+        return $this;
+    }
 
     public function getId(): ?int
     {
