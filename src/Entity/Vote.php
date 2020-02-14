@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *          "post",
  *          "get_vote_by_prize"={
  *              "method"="GET",
- *               "path"="/vote/get_vote_by_prize",
+ *               "path"="/votes/get_vote_by_prize",
  *              "controller"="App\Controller\VoteControllers\GetVoteByPrize"},
  *
  *
