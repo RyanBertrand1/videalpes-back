@@ -26,7 +26,7 @@ class GetVoteByPrize
     {
         $votesByPrize = array();
         $projectsVote = array();
-        $prize_id = $request->get("prize_id");
+        $prize_id = $request->get("prizeId");
         $prize = $this->em->getRepository(Prize::class)->find($prize_id);
         $projects = $this->em->getRepository(Projet::class)->findByTypeId($prize->getType()->getId());
         foreach ($projects as $project){
