@@ -6,7 +6,17 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource(attributes={"pagination_enabled"=false})
+ * @ApiResource(attributes={"pagination_enabled"=false},
+ *     collectionOperations={
+            "get",
+ *          "post",
+ *          "get_vote_by_prize"={
+ *              "method"="GET",
+ *               "path"="/vote/get_vote_by_prize",
+ *              "controller"="App\Controller\VoteControllers\GetVoteByPrize"},
+ *
+ *
+ *     })
  * @ORM\Entity(repositoryClass="App\Repository\VoteRepository")
  *
  * @ORM\HasLifecycleCallbacks()
