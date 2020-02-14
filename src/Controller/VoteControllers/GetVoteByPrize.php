@@ -9,7 +9,6 @@ use App\Entity\Prize;
 use App\Entity\Projet;
 use App\Entity\Vote;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 
