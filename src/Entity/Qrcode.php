@@ -21,6 +21,11 @@ use Ramsey\Uuid\Uuid;
                 "method"="POST",
  *              "path"="/qrcodes/create_by_number",
  *              "controller"="App\Controller\QrcodesControllers\createByNumber"
+ *          },
+ *          "add_prize"={
+                "method"="GET",
+ *              "path"="/qrcodes/add_prize",
+ *              "controller"="App\Controller\QrcodesControllers\AddPrize"
  *          }
  *     }
  * )
@@ -43,7 +48,7 @@ class Qrcode
     private $uuid;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Prize", mappedBy="qrcodes")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Prize", mappedBy="qrcodes", cascade={"persist"})
      */
     private $prizes;
 
