@@ -26,6 +26,11 @@ use Ramsey\Uuid\Uuid;
                 "method"="GET",
  *              "path"="/qrcodes/add_prize",
  *              "controller"="App\Controller\QrcodesControllers\AddPrize"
+ *          },
+ *          "DeleteAll"={
+                "method"="GET",
+ *              "path"="/qrcodes/deleteAll",
+ *              "controller"="App\Controller\QrcodesControllers\DeleteAll"
  *          }
  *     }
  * )
