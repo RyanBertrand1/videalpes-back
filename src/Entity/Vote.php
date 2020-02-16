@@ -14,7 +14,11 @@ use Doctrine\ORM\Mapping as ORM;
  *              "method"="GET",
  *               "path"="/votes/get_vote_by_prize",
  *              "controller"="App\Controller\VoteControllers\GetVoteByPrize"},
- *
+ *          "deleteAll" = {
+                "method"="GET",
+ *              "path"="/votes/deleteAll",
+ *              "controller"="App\Controller\VoteControllers\DeleteAll"
+ *          }
  *
  *     })
  * @ORM\Entity(repositoryClass="App\Repository\VoteRepository")
